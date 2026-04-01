@@ -4,7 +4,7 @@
 
 This project presents a hybrid approach for cyber threat detection by combining Machine Learning and rule-based static analysis techniques inspired by COSSETER.
 
-The goal is to improve detection accuracy while reducing false positives by leveraging both adaptive learning and structured code analysis.
+The goal is to improve detection accuracy while reducing false positives by leveraging both adaptive learning and structured analysis.
 
 ---
 
@@ -23,7 +23,7 @@ Cybersecurity threats are constantly evolving, making traditional detection appr
 * Static analysis is precise but limited to predefined rules
 * Machine Learning is adaptive but may produce false positives
 
-This project explores a hybrid solution that combines both approaches to improve reliability and performance.
+This project explores a hybrid solution that combines both approaches.
 
 ---
 
@@ -33,21 +33,18 @@ The system follows a hybrid pipeline:
 
 1. **Machine Learning Module**
 
-   * Detects suspicious activity using a trained model (Random Forest)
-   * Based on the NSL-KDD dataset
+   * Detects suspicious activity using a Random Forest model
+   * Trained on the NSL-KDD dataset
 
 2. **Static Analysis Module**
 
    * Simulates rule-based analysis inspired by COSSETER
-   * Identifies risky behaviors such as:
-
-     * Write permission abuse
-     * Execution patterns
+   * Identifies risky behaviors (e.g., execution patterns, permissions)
 
 3. **Hybrid Decision Flow**
 
 ```python
-if prediction == "suspicious":
+if prediction != "normal":
     run_static_analysis()
 ```
 
@@ -78,6 +75,7 @@ hybrid-ml-cyber-threat-detection/
 * Python
 * Pandas
 * Scikit-learn
+* Matplotlib
 
 ---
 
@@ -87,9 +85,25 @@ This project uses the **NSL-KDD dataset**, a standard benchmark for intrusion de
 
 ---
 
+## Results
+
+The Random Forest model achieved:
+
+* **Accuracy:** ~89.7%
+
+### Key Observations:
+
+* Strong overall performance across multiple classes
+* Some variation in precision and recall due to dataset complexity
+* Expected behavior for multi-class cybersecurity datasets
+
+The results demonstrate that the machine learning model is effective in detecting suspicious patterns and supports the hybrid detection approach.
+
+---
+
 ## Research Paper
 
-This project is accompanied by a short research paper describing the proposed hybrid approach:
+This project is accompanied by a short research paper:
 
 * 📄 [Read the paper (English)](docs/paper_en.pdf)
 * 📄 [Leia o artigo (Português)](docs/paper_pt.pdf)
@@ -105,31 +119,22 @@ python main.py
 
 ---
 
-## Results
-
-The hybrid system works as follows:
-
-* Machine Learning identifies suspicious patterns
-* Static analysis validates and refines detection
-* Reduces false positives and improves interpretability
-
----
-
 ## Future Work
 
+* Improve feature engineering
+* Explore binary classification (normal vs attack)
+* Compare additional models
 * Integrate real static analysis tools
-* Improve feature extraction
-* Apply deep learning models
-* Expand to real-world datasets
+* Apply deep learning approaches
 
 ---
 
 ## Contribution
 
-This project demonstrates how combining Machine Learning and static analysis can improve cybersecurity systems, providing a foundation for future research.
+This project demonstrates how combining Machine Learning and static analysis can improve cybersecurity systems and provides a foundation for further research.
 
 ---
 
 ## License
 
-This project is for academic and research purposes.
+This project is intended for academic and research purposes.
